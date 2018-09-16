@@ -32,8 +32,20 @@ public class GameBoard {
         return gameBoard[row*numRow + col];
     }
 
+    public int getCell(int index) {
+        return gameBoard[index];
+    }
+
     public void setCell(int row, int col, int value) {
         gameBoard[row*numRow + col] = value;
+    }
+
+    public void setCell(int index, int value) {
+        gameBoard[index] = value;
+    }
+
+    public int getNumCells() {
+        return numRow * numCol;
     }
 
     public boolean isUncovered(int row, int col) {
@@ -44,24 +56,27 @@ public class GameBoard {
         maskedBoard[row*numRow + col] = true;
     }
 
-    public void setRowCol(int row, int col) {
-        numRow = row;
-        numCol = col;
-        resetBoard(); //no point keeping the original board
-    }
-
-    public void resetBoard() {
-        //easier to just recreate the int[] object
-        gameBoard = new int[numRow*numCol];
-        maskedBoard = new boolean[numRow*numCol];
-    }
-
     public int getNumRow() {
         return numRow;
     }
 
     public int getNumCol() {
         return numCol;
+    }
+
+    public void print(boolean showHidden) {
+
+        for (int cell=0; cell < gameBoard.length; cell++) {
+            if (showHidden || maskedBoard[cell]) {
+                System.out.print(gameBoard[cell] + " ");
+            } else {
+                System.out.print("- ");
+            }
+
+            if (cell%numCol == numCol-1) {
+                System.out.println();
+            }
+        }
     }
 
 }
