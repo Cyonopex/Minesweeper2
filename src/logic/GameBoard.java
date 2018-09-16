@@ -4,8 +4,8 @@ public class GameBoard {
 
     /* One long integer array for gameboard
        Mapping for numRow/column,
-       numRow = n/rowLength
-       col = n%rowlength
+       numRow = n/columns
+       col = n%columns
 
        0 - 8 refers to number of mines
        9 means mine exists in this column
