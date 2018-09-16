@@ -87,7 +87,7 @@ public class GameLogic {
             beyondBorder[3] = true;
             beyondBorder[5] = true;
         }
-        if (index % board.getNumCol() == board.getNumCol()-1) { //mine is on left
+        if (index % board.getNumCol() == board.getNumCol()-1) { //mine is on right
             beyondBorder[2] = true;
             beyondBorder[4] = true;
             beyondBorder[7] = true;
@@ -122,7 +122,35 @@ public class GameLogic {
      * @return If true, game is over
      */
     public boolean playMove(int row, int col) {
-        return true;
+
+        if (row == 1 && col == 9) {
+            System.out.println("hi");
+        }
+        System.out.println("Playing row " + row + " and col " + col);
+
+        if (row >= board.getNumRow() || col >= board.getNumCol()) {
+            throw new IllegalArgumentException("Coordinates are out of bounds");
+        }
+        int cell = board.getCell(row, col);
+        if (cell == 9) return true; //game over
+
+        //play cell
+        board.setUncovered(row, col);
+
+
+        //play adjacent cells if it is a zero
+        if (cell == 0){
+            ArrayList<Integer> surroundingCells = getSurroundingSquares(row*board.getNumCol() + col);
+            for (int surroundingCell : surroundingCells) {
+                //only play if it has not been played yet
+                if (!board.isUncovered(surroundingCell)) {
+                    playMove(surroundingCell/board.getNumCol(), surroundingCell%board.getNumCol());
+                }
+
+            }
+        }
+
+        return false;
     }
 
     public void print(boolean show){

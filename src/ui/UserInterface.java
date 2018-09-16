@@ -5,9 +5,13 @@ import logic.GameLogic;
 
 public class UserInterface {
     public static void main(String[] args) {
-        GameLogic logic = new GameLogic(10,15);
-        logic.createMines(10, 0,0);
+        GameLogic logic = new GameLogic(5,10);
+        logic.createMines(0, 0,0);
         logic.print(true);
+        logic.print(false);
+
+        logic.playMove(0,0);
+
         logic.print(false);
     }
 }

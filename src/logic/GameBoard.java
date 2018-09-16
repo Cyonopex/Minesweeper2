@@ -48,8 +48,8 @@ public class GameBoard {
         return numRow * numCol;
     }
 
-    public boolean isUncovered(int row, int col) {
-        return maskedBoard[row*numRow + col];
+    public boolean isUncovered(int index) {
+        return maskedBoard[index];
     }
 
     public void setUncovered(int row, int col) {
