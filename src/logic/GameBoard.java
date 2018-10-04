@@ -29,7 +29,7 @@ public class GameBoard {
     }
 
     public int getCell(int row, int col) {
-        return gameBoard[row*numRow + col];
+        return gameBoard[row*numCol + col];
     }
 
     public int getCell(int index) {
@@ -37,7 +37,7 @@ public class GameBoard {
     }
 
     public void setCell(int row, int col, int value) {
-        gameBoard[row*numRow + col] = value;
+        gameBoard[row*numCol + col] = value;
     }
 
     public void setCell(int index, int value) {
@@ -53,7 +53,7 @@ public class GameBoard {
     }
 
     public void setUncovered(int row, int col) {
-        maskedBoard[row*numRow + col] = true;
+        maskedBoard[row*this.numCol + col] = true;
     }
 
     public int getNumRow() {

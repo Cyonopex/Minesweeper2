@@ -123,11 +123,8 @@ public class GameLogic {
      */
     public boolean playMove(int row, int col) {
 
-        if (row == 1 && col == 9) {
-            System.out.println("hi");
-        }
         System.out.println("Playing row " + row + " and col " + col);
-
+        board.setUncovered(row, col);
         if (row >= board.getNumRow() || col >= board.getNumCol()) {
             throw new IllegalArgumentException("Coordinates are out of bounds");
         }
@@ -135,7 +132,7 @@ public class GameLogic {
         if (cell == 9) return true; //game over
 
         //play cell
-        board.setUncovered(row, col);
+
 
 
         //play adjacent cells if it is a zero
